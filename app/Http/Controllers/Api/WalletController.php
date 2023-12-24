@@ -25,4 +25,25 @@ class WalletController extends Controller
             return response()->json(['error' => $e->getMessage()], 422);
         }
     }
+
+
+
+    public function addMoney(Request $request)
+    {
+        try {
+            $this->validate($request, [
+                'user_id' => 'required|integer',
+                'amount' => 'required|numeric',
+            ]);
+
+            $user_id = $request->input('user_id');
+            $amount = $request->input('amount');
+
+            $referenceId = $this->WService->addMoney($user_id, $amount);
+
+            return response()->json(['reference_id' => $referenceId]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 422);
+        }
+    }
 }
