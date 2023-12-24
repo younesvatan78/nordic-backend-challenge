@@ -20,5 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/wallet/{user_id}/balance', [WalletController::class, 'getBalance']);
-Route::post('/wallet/add-money', [WalletController::class, 'addMoney']);
+Route::get('api/wallet/balance/{user_id}', [WalletController::class, 'getBalance']);
+Route::post('api/wallet/add-money', [WalletController::class, 'addMoney']);
