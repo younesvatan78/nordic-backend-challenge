@@ -32,20 +32,25 @@ class WalletService {
     public function addMoney($user_id, $amount)
     {
         $user = User::findOrFail($user_id);
+
+        if (!$user->wallet) {
+            $user->wallet()->create(['balance' => 0]);
+        }
+
         $transaction = new Transaction([
             'user_id' => $user_id,
             'amount' => $amount,
-            'reference_id' => $this->generateReferenceId()
+            'reference_id' => $this->generateReferenceId(),
         ]);
 
         $transaction->save();
+
         $wallet = $user->wallet;
         $wallet->balance += $amount;
         $wallet->save();
 
         return $transaction->reference_id;
-
-    }  
+    } 
 
     /**
      * generateReferenceId
