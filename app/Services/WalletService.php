@@ -30,9 +30,7 @@ class WalletService {
      */
     public function addMoney($user_id, $amount)
     {
-        if ($amount < 0) {
-            throw new \Exception('Cannot add a negative amount to the wallet.');
-        }
+
 
         $user = User::findOrFail($user_id);
         $transaction = new Transaction([
