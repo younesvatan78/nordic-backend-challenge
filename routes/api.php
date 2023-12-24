@@ -15,10 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 
-Route::get('api/wallet/balance/{user_id}', [WalletController::class, 'getBalance']);
-Route::post('api/wallet/add-money', [WalletController::class, 'addMoney']);
+Route::get('wallet/balance/{user_id}', [WalletController::class, 'getBalance']);
+
+
+Route::post('wallet/add-money', [WalletController::class, 'addMoney']);
