@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use App\Services\WalletService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -14,7 +15,7 @@ class WalletServiceTest extends TestCase
     protected WalletService $WService;
 
     protected function setUp(): void{
-        parent:setUp();
+        parent::setUp();
         $this->WService = app(WalletService::class);
 
     }
