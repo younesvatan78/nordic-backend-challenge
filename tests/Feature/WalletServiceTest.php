@@ -60,6 +60,11 @@ class WalletServiceTest extends TestCase
         $this->expectException(\Exception::class);
         $this->WService->addMoney(2000,50);
     }
-    
+
+    public function test_Get_Balance_For_NonexistUser(){
+        $this->expectException(\Exception::class);
+        $this->WService->getBalance(2000);
+    }
+
 
 }
