@@ -3,6 +3,7 @@ namespace App\Services;
 
 use App\Models\User;
 use App\Models\Transaction;
+use \Illuminate\Support\Str;
 
 class WalletService {
         
@@ -30,8 +31,6 @@ class WalletService {
      */
     public function addMoney($user_id, $amount)
     {
-
-
         $user = User::findOrFail($user_id);
         $transaction = new Transaction([
             'user_id' => $user_id,
@@ -46,14 +45,16 @@ class WalletService {
 
         return $transaction->reference_id;
 
+    }  
+
+    /**
+     * generateReferenceId
+     *
+     * @return mix $uuid as RefrenceId
+     */
+    protected function generateReferenceId()
+    {
+        return Str::uuid()->toString();
     }
-    
-
-
-
-
-
-
-
 
 }
