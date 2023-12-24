@@ -5,8 +5,9 @@ Run tests:
 ```
 php artisan test
 ```
-and to test the API:
-Use ```[GET] localhost:8000/api/wallet/balance/{user_id}``` to get the wallet balance of the user, where user_id is the id of user.
+And to use the API:
+
+Use ```[GET] localhost:8000/api/wallet/balance/{user_id}``` to get the wallet balance of the user, where user_id is the id of the user.
 
 Use ```[POST] localhost:8000/api/wallet/add-money``` with the user_id and amount fields required in the body of your request.
 
