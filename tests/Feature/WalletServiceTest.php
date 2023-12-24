@@ -18,7 +18,7 @@ class WalletServiceTest extends TestCase
         $this->WService = app(WalletService::class);
 
     }
-    public function testCanGetBalanceForUser()
+    public function test_Get_Balance_For_User()
     {
         $user = User::factory()->create(['id' => 1]);
         $user->wallet()->create(['balance' => 500]);
@@ -26,6 +26,12 @@ class WalletServiceTest extends TestCase
         $balance = $this->WService->getBalance($user->id);
 
         $this->assertEquals(500, $balance);
+    }
+    
+    public function test_Add_Money_To_User_Wallet(){
+        $user = User::factory()->create(['id'=>2]);
+        $refrenceId = $this->WService->addMoney($user->id, 1000);
+        $balance = $this->WService->getBalance($user->id);
     }
     
 }
