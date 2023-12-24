@@ -31,6 +31,8 @@ class WalletServiceTest extends TestCase
     
     public function test_Add_Money_To_User_Wallet(){
         $user = User::factory()->create(['id'=>2]);
+        $user->wallet()->create(['balance' => 0]);
+        
         $refrenceId = $this->WService->addMoney($user->id, 1000);
         $balance = $this->WService->getBalance($user->id);
 
@@ -41,6 +43,7 @@ class WalletServiceTest extends TestCase
 
     public function test_Add_Negetive_amount_To_User_Wallet(){
         $user = User::factory()->create(['id' => 3]);
+        $user->wallet()->create(['balance' => 0]);
 
         $refrenceId = $this->WService->addMoney($user->id,-50);
 
