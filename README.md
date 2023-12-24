@@ -15,7 +15,8 @@ To simplify your usage you can use these two curl requests:
 ```curl --location '127.0.0.1:8000/api/wallet/balance/1'``` To get wallet balance 
 
 To add money to the wallet (supports negative values too):
-```curl --location '127.0.0.1:8000/api/wallet/add-money' \
+```
+curl --location '127.0.0.1:8000/api/wallet/add-money' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'user_id=1' \
 --data-urlencode 'amount=50'
